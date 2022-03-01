@@ -1,457 +1,235 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat");
-
-$darkest-blue: #1a237e;
-$darker-blue: #283593;
-$dark-blue: #303f9f;
-$medium-blue: #3949ab;
-$light-blue: #3f51b5;
-$lighter-blue: #5c6bc0;
-$lightest-blue: #9fa8da;
-$white: #ffffff;
-$black: #0e1442;
-$orange: #ffb300;
-$yellow: #fdd835;
-$dark-pink: #ad1457;
-$light-pink: #d81b60;
-
 @charset "UTF-8";
+
 * {
-  outline: none;
+    min-height: 0;
+    min-width: 0;
+    box-sizing: border-box;
+    transform-origin: 0px 0px 0px;
 }
 
-*,
-*:before,
-*:after {
-  -webkit-box-sizing: inherit;
-  -moz-box-sizing: inherit;
-  box-sizing: inherit;
+p:blank, li:blank, div:blank, section:blank {
+    display: none;
 }
 
-html,
+p:empty, li:empty, div:empty, section:empty {
+    display: none;
+}
+
+p:-moz-only-whitespace, li:-moz-only-whitespace, div:-moz-only-whitespace, section:-moz-only-whitespace {
+    display: none;
+}
+
+/* Page Variables */
+
+:root {
+    --main-width: 74%;
+    --header-height: 1.2in;
+    --sidebar-width: calc(100% - var(--main-width));
+}
+
 body {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  background: $white;
-  cursor: default;
-  font-family: "Montserrat", sans-serif;
-  font-size: 16px;
+    font-size: 0.95em;
+    margin: 0 auto;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
+    text-rendering: optimizeLegibility;
+    text-decoration-skip: ink;
+    hyphens: auto;
 }
 
-a {
-  text-decoration: none;
-  color: $white;
-  display: block;
-  transition-duration: 0.3s;
+#save > section:first-of-type {
+    display: flex;
+    flex-direction: row;
+}
+
+.summary {
+    font-size: 105%;
+}
+
+/* Misc */
+
+img {
+    max-width: 100%;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+abbr[title] {
+    text-decoration: none;
+    border: none;
 }
 
 ul {
-  list-style-type: none;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
-h2 {
+li {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
 
-h3 {
-  color: $orange;
-  margin: 10px 0;
-  text-transform: lowercase;
-  font-size: 1.25em;
+li + li {
+    margin-top: 0.4em;
 }
 
-.resume {
-  width: 960px;
-  background: $darkest-blue;
-  color: $white;
-  margin: 20px auto;
-  box-shadow: 10px 10px $black;
-  position: relative;
-  display: flex;
-}
-.resume .base,
-.resume .func {
-  box-sizing: border-box;
-  float: left;
-}
-.resume .base > div,
-.resume .func > div {
-  padding-bottom: 10px;
-}
-.resume .base > div:last-of-type,
-.resume .func > div:last-of-type {
-  padding-bottom: 0;
-}
-.resume .base {
-  width: 30%;
-  padding: 30px 15px;
-  background: $darker-blue;
-  color: $white;
-}
-.resume .base .profile {
-  background: $orange;
-  padding: 30px 15px 40px 15px;
-  margin: -30px -15px 45px -15px;
-  position: relative;
-  z-index: 2;
-}
-.resume .base .profile::after {
-  content: "";
-  position: absolute;
-  background: $dark-blue;
-  width: 100%;
-  height: 30px;
-  bottom: -15px;
-  left: 0;
-  transform: skewY(-5deg);
-  z-index: -1;
-}
-.resume .base .profile .photo img {
-  width: 100%;
-  border-radius: 50%;
-}
-.resume .base .profile .photo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.resume .base .profile .fa-rocket {
-  font-size: 100px;
-  text-align: center;
-  margin: auto;
-  color: $darker-blue;
-}
-.resume .base .profile .info {
-  text-align: center;
-  color: $white;
-}
-.resume .base .profile .info .name {
-  margin-top: 10px;
-  margin-bottom: 0;
-  font-size: 1.75em;
-  text-transform: lowercase;
-  color: $darkest-blue;
-}
-.resume .base .profile .info .job {
-  margin-top: 10px;
-  margin-bottom: 0;
-  font-size: 1.5em;
-  text-transform: lowercase;
-  color: $darker-blue;
-}
-.resume .base .contact div {
-  line-height: 24px;
-}
-.resume .base .contact div a:hover {
-  color: $yellow;
-}
-.resume .base .contact div a:hover span::after {
-  width: 100%;
-}
-.resume .base .contact div:hover i {
-  color: $yellow;
-}
-.resume .base .contact div i {
-  color: $orange;
-  width: 20px;
-  height: 20px;
-  font-size: 20px;
-  text-align: center;
-  margin-right: 15px;
-  transition-duration: 0.3s;
-}
-.resume .base .contact div span {
-  position: relative;
-}
-.resume .base .contact div span::after {
-  content: "";
-  position: absolute;
-  background: $yellow;
-  height: 1px;
-  width: 0;
-  bottom: 0;
-  left: 0;
-  transition-duration: 0.3s;
-}
-.resume .base .follow .box {
-  text-align: center;
-  vertical-align: middle;
-}
-.resume .base .follow .box a {
-  display: inline-block;
-  vertical-align: text-bottom;
-}
-.resume .base .follow .box a:hover i {
-  background: $yellow;
-  border-radius: 5px;
-  transform: rotate(45deg) scale(0.8);
-}
-.resume .base .follow .box a:hover i::before {
-  transform: rotate(-45deg) scale(1.5);
-}
-.resume .base .follow .box i {
-  display: inline-block;
-  font-size: 30px;
-  background: $orange;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  line-height: 60px;
-  color: $darker-blue;
-  margin: 0 10px 10px 10px;
-  transition-duration: 0.3s;
-}
-.resume .base .follow .box i::before {
-  transition-duration: 0.3s;
-}
-.resume .base .follow .box i.fa::before {
-  display: block;
-}
-.resume .func {
-  width: 100%;
-  padding: 30px;
-}
-.resume .func:hover > div {
-  transition-duration: 0.5s;
-}
-.resume .func:hover > div:hover h3 i {
-  transform: scale(1.25);
-}
-.resume .func:hover > div:not(:hover) {
-  opacity: 0.5;
-}
-.resume .func h3 {
-  transition-duration: 0.3s;
-  margin-top: 0;
-}
-.resume .func h3 i {
-  color: $darker-blue;
-  background: $orange;
-  width: 42px;
-  height: 42px;
-  font-size: 20px;
-  line-height: 42px;
-  border-radius: 50%;
-  text-align: center;
-  vertical-align: middle;
-  margin-right: 8px;
-  transition-duration: 0.3s;
-}
-.resume .func .work,
-.resume .func .edu {
-  float: left;
-}
-.resume .func .work small,
-.resume .func .edu small {
-  display: block;
-  opacity: 0.7;
-}
-.resume .func .work ul li,
-.resume .func .edu ul li {
-  position: relative;
-  margin-left: 15px;
-  padding-left: 25px;
-  padding-bottom: 15px;
-}
-.resume .func .work ul li:hover::before,
-.resume .func .edu ul li:hover::before {
-  animation: circle 1.2s infinite;
-}
-.resume .func .work ul li:hover span,
-.resume .func .edu ul li:hover span {
-  color: $yellow;
-}
-@keyframes circle {
-  from {
-    box-shadow: 0 0 0 0px $yellow;
-  }
-  to {
-    box-shadow: 0 0 0 6px rgba(255, 255, 255, 0);
-  }
-}
-.resume .func .work ul li:first-of-type::before,
-.resume .func .edu ul li:first-of-type::before {
-  width: 10px;
-  height: 10px;
-  left: 1px;
-}
-.resume .func .work ul li:last-of-type,
-.resume .func .edu ul li:last-of-type {
-  padding-bottom: 3px;
-}
-.resume .func .work ul li:last-of-type::after,
-.resume .func .edu ul li:last-of-type::after {
-  border-radius: 1.5px;
-}
-.resume .func .work ul li::before,
-.resume .func .work ul li::after,
-.resume .func .edu ul li::before,
-.resume .func .edu ul li::after {
-  content: "";
-  display: block;
-  position: absolute;
-}
-.resume .func .work ul li::before,
-.resume .func .edu ul li::before {
-  width: 7px;
-  height: 7px;
-  border: 3px solid $white;
-  background: $orange;
-  border-radius: 50%;
-  left: 3px;
-  z-index: 1;
-}
-.resume .func .work ul li::after,
-.resume .func .edu ul li::after {
-  width: 3px;
-  height: 100%;
-  background: $white;
-  left: 5px;
-  top: 0;
-}
-.resume .func .work ul li span,
-.resume .func .edu ul li span {
-  transition-duration: 0.3s;
-}
-.resume .func .work {
-  width: 48%;
-  background: $darker-blue;
-  padding: 15px;
-  margin: 0 4% 15px 0;
-}
-.resume .func .edu {
-  width: 48%;
-  background: $darker-blue;
-  padding: 15px;
-}
-.resume .func .skills-prog {
-  clear: both;
-  background: $darker-blue;
-  padding: 15px;
-}
-.resume .func .skills-prog ul {
-  margin-left: 15px;
-}
-.resume .func .skills-prog ul li {
-  margin-bottom: 8px;
-  display: flex;
-  align-items: center;
-  transition-duration: 0.3s;
-}
-.resume .func .skills-prog ul li:hover {
-  color: $yellow;
-}
-.resume .func .skills-prog ul li:hover .skills-bar .bar {
-  background: $yellow;
-  box-shadow: 0 0 0 1px $yellow;
-}
-.resume .func .skills-prog ul li span {
-  display: block;
-  width: 120px;
-}
-.resume .func .skills-prog ul li .skills-bar {
-  background: $white;
-  height: 2px;
-  width: calc(100% - 120px);
-  position: relative;
-  border-radius: 2px;
-}
-.resume .func .skills-prog ul li .skills-bar .bar {
-  position: absolute;
-  top: -1px;
-  height: 4px;
-  background: $orange;
-  box-shadow: 0 0 0 $orange;
-  border-radius: 5px;
-}
-.resume .func .skills-soft {
-  clear: both;
-  background: $darker-blue;
-  padding: 15px;
-  margin: 15px 0 0;
-}
-.resume .func .skills-soft ul {
-  display: flex;
-  justify-content: space-between;
-  text-align: center;
-}
-.resume .func .skills-soft ul li {
-  position: relative;
-}
-.resume .func .skills-soft ul li:hover svg .cbar {
-  stroke: $yellow;
-  stroke-width: 4px;
-}
-.resume .func .skills-soft ul li:hover span,
-.resume .func .skills-soft ul li:hover small {
-  transform: scale(1.2);
-}
-.resume .func .skills-soft ul li svg {
-  width: 95%;
-  fill: transparent;
-  transform: rotate(-90deg);
-}
-.resume .func .skills-soft ul li svg circle {
-  stroke-width: 1px;
-  stroke: $white;
-}
-.resume .func .skills-soft ul li svg .cbar {
-  stroke-width: 3px;
-  stroke: $orange;
-  stroke-linecap: round;
-}
-.resume .func .skills-soft ul li span,
-.resume .func .skills-soft ul li small {
-  position: absolute;
-  display: block;
-  width: 100%;
-  top: 52%;
-  transition-duration: 0.3s;
-}
-.resume .func .skills-soft ul li span {
-  top: 40%;
-}
-.resume .func .interests {
-  background: $darker-blue;
-  margin: 15px 0 0;
-  padding: 15px;
-}
-.resume .func .interests-items {
-  box-sizing: border-box;
-  padding: 0 0 15px;
-  width: 100%;
-  text-align: center;
-  display: flex;
-  justify-content: space-between;
-}
-.resume .func .interests-items div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-}
-.resume .func .interests-items div:hover i {
-  transform: scale(1.2);
-}
-.resume .func .interests-items div:hover span {
-  color: $yellow;
-  transition-duration: 0.3s;
-}
-.resume .func .interests-items div i {
-  font-size: 45px;
-  width: 60px;
-  height: 60px;
-  line-height: 60px;
-  color: $orange;
-  transition-duration: 0.3s;
-}
-.resume .func .interests-items div span {
-  display: block;
+.fa, .fab {
+    text-align: center;
+    min-width: 1em;
+}
+
+li .fa, li .fab {
+    margin-right: 0.3em;
+}
+
+/* Page layout */
+
+#save > section:first-of-type > aside {
+    flex-basis: var(--sidebar-width);
+    padding: 0.1618in 0 0.1618in 0.1618in;
+    display: flex;
+    flex-direction: column;
+}
+
+#save > section:first-of-type > aside > section + section {
+    margin-top: 2em;
+}
+
+#save > section:first-of-type > aside > section:last-child {
+    margin-top: auto;
+} 
+
+#save > section:first-of-type > section {
+    flex-basis: var(--main-width);
+    display: flex;
+    flex-direction: column;
+}
+
+#save > section:first-of-type > section > header {
+    flex-basis: var(--header-height);
+    flex-grow: 0;
+    padding: 0.1618in;
+}
+
+#save > section:first-of-type > section > section {
+    flex-grow: 1;
+    padding: 0.1618in;
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+#save > section:first-of-type > section > section > section + section {
+    margin-top: 1em;
+}
+
+#save > section:first-of-type > section > section > section:last-child {
+    margin-top: auto;
+}
+
+.references address {
+    font-style: normal;
+    font-weight: 300;
+}
+
+.references address:first-line {
+    font-weight: 400;
+}
+
+.references address + address,
+.references address + p {
+    padding-top: 0.5em;
+}
+
+/* Skills */
+
+.skills {
+    font-size: 92%;
+}
+
+.skills > ul:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.skills > ul > li {
+    display: block;
+    float: left;
+    margin: 6px 6px 0 0;
+}
+
+.skills > ul > li > span {
+    background-color: #f5f5f5;
+    border: 1px solid rgba(45, 45, 45, 0.1618);
+    border-radius: 3px;
+    color: #333;
+    padding: 4px 8px;
+    display: inline-block;
+}
+
+/* Experience & Education */
+
+.education ol,
+.experience ol {
+    margin: 0;
+    padding: 0;
+}
+
+.experience ol {
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+}
+
+.experience ol > li {
+    margin: 0;
+    padding: 0;
+    flex-basis: 100%;
+    font-weight: 300;
+}
+
+.education ol > li {
+    font-weight: 300;
+}
+
+.experience ol > li + li {
+    margin-top: 1em;
+}
+
+.education ol > li div,
+.experience ol > li header {
+    display: flex;
+    flex-direction: row;
+}
+
+.experience ol > li > span,
+.education ol > li p,
+.experience ol > li header p {
+    font-weight: 400;
+}
+
+.experience ol > li header p {
+    font-size: 110%;
+}
+
+.education ol > li div > *:last-child,
+.experience ol > li header > *:last-child {
+    margin-left: auto;
+}
+
+.experience ol > li ul {
+    padding-top: 0.5em;
+}
+
+.experience ol > li ul li {
+    list-style-type: circle;
+    margin-left: 1.618em;
 }
